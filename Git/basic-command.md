@@ -47,6 +47,7 @@ git config -- global user.name <이름>
 ## 원격저장소 Github에 업로드/다운하기
 
 - Github에 업로드
+    - 터미널창에서 뜨는 장소가 자신이 원하는 정보를 입력한 장소가 맞는지 확인해야 한다. 다른 경우 `cd 폴더명`으로 맞는 위치로 가야 한다. 
 ```
 git add .
 git commit -m "변경사항메세지"
