@@ -11,7 +11,7 @@ git config -- global user.name <이름>
 ## git 저장소 만들기
 
 - `git init`
-    - `.git directory`를 생성해주는 명령어
+    - `.git directory` 자료방을 생성해주는 명령어
     - 관리하고 싶은 최상위 위치에서 실행
 
 ## git 상태 체크
@@ -42,7 +42,13 @@ git config -- global user.name <이름>
     - `git push <원격저장소이름> <브랜치이름>`
     - 원격저장소에 브랜치를 업로드
 
-    add . > commit > push
+    ```
+    git init
+    git add .
+    git commit -m "메세지"
+    git remote add origin <URL>
+    git push <원격저장소이름> <브랜치이름>
+    ```
 
 ## 원격저장소 Github에 업로드/다운하기
 
