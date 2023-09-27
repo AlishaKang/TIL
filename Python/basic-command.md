@@ -110,7 +110,7 @@ print(lucky_number)
 ```
 - 위의 예제 출력값을 오름차순 정렬을 하고 싶다면 `sorted()`를 사용해 마지막 줄을 `print(sorted(lucky_number))`로 바꿔주면 된다.
 
-## 로또 날짜와 정보 가져오기
+## URL로 로또 날짜와 정보 가져오기
 
 ```
 URL = 'https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=1086'
@@ -139,3 +139,22 @@ print(lotto_number)
 print(set(lucky_number) & set(lotto_number))
 ```
 - 교집합이 없는 경우, set()을 출력한다.
+
+## 미세먼지 농도와 상태 알려주기
+```
+import requests 
+from pprint import pprint #깔끔한 정렬
+
+URL = 'http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?serviceKey=%2B58fRxySTvs0PfFQUY4WIxmfUdNzO2PRCGrFR%2BwurNXadOEb4nRyU4TfZFft%2FX7IOwZchblSbWUzs2S9mm1q2Q%3D%3D&returnType=json&numOfRows=100&pageNo=1&sidoName=%EC%84%9C%EC%9A%B8&ver=1.0'
+
+res = requests.get(URL)
+
+data = res.json()
+
+items = data['response']['body']['items']
+
+for item in items:
+    if item['stationName'] == '강남구':
+        pprint(item['pm10Value'])
+
+```
