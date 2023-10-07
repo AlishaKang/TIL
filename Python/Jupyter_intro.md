@@ -1,4 +1,4 @@
-## 01. Jupyter Intro
+# 01. Jupyter Intro
 - 단축키
     - ctrl + enter : 지금 셀 실행
     - shift + enter : 지금 셀 실행 & 아래로 이동
@@ -311,4 +311,141 @@ print(bool([1, 2, 3])) #True
 ## 4.5 시퀀스에서 사용가능한 연산/함수
 
 - indexing
-- slicing ???
+- slicing 
+- not in
+- concatenation
+- *
+
+## 5.0 시퀀스 데이터가 아닌 자료구조
+
+- set
+- dictionary
+
+
+## 5.1 set
+- 수학에서 사용하는 집합과 동일하게 처리(중복된 값이 없음)
+- 선언 : 변수이름 = {value1, value2, value3}
+
+## 5.3 dictionary
+- 선언 : 변수이름 = {key1: value1, key2: value2, key3: value3}
+
+## 데이터 타입
+1. Number
+2. Boolean
+3. String
+
+## 자료구조
+- 시퀀스 자료향
+    1. [List] : mutable
+    2. (Tuple) : immutable
+    3. range() : immutable
+    4. 'String' : immutable
+
+- 시퀀스가 아닌 자료형
+    1. {Set} : mutable
+    2. {Dict: ionary} : mutable
+
+# 02 Control of flow
+## 제어문
+- 조건문(if문)
+```
+if <조건식>:
+    조건식이 참인 경우 실행하는 코드
+elif <조건식>:
+    elif조건식이 참인 경우 실행하는 코드
+else:
+    거짓인 경우 실행하는 코드
+```
+
+- 조건표현식
+```
+ture_value if <조건식> else false_value
+```
+
+## 반복문
+- while문
+```
+while <조건식>:
+    실행할 코드
+```
+- for
+```
+for variable in sequence:
+    실행할 코드
+```
+- dictionary 반복
+1. for key in dict:
+2. for key in dict.keys():
+3. for value in dict.values():
+4. for key, value in dict.items():
+
+- break 반복문 종료
+```
+for i in range(100):
+    print(i)
+    if i > 10:
+        print('10넘었어!!')
+        break
+```
+- continue
+    - continue 이후의 코드를 실행하지 않고 다음 반복을 실행
+    ```
+    for i in range(10):
+    if i % 2:
+        continue
+
+    print(i)
+    ```
+- else 
+    - 끝까지 반복이 진행이 된 경우, 실행. break를 만나지 않은 경우.
+- pass
+- match
+```
+match value:
+    case 조건:
+        실행할 코드
+    case 조건:
+        실행할 코드
+    case __: #다운슬라이스 두 개
+        실행할 코드
+```
+
+# 03 함수(Function)
+## 함수의 선언과 호출
+- 함수의 선언
+```
+def func_name(parameter1, parameter2):
+    code1
+    code2
+    ...
+    return value
+```
+- 함수의 호출(실행)
+```
+function_name(parameter1, parameter2)
+```
+
+## 함수의 return
+- 함수가 return을 만나면 해당 값을 반환하고 함수를 종료
+- 만약 return이 없다면 none을 자동으로 반환
+- return은 오직 하나의 객체만 반환합니다.
+
+## 함수의 인수
+- 위치인수
+- 기본값 지정
+```
+def greeting(name='익명'): 
+    return f'{name}님 안녕하세요!!'
+```
+- 키워드 인자
+- 가변 인자 리스트
+- 정의되지 않은 키워드 인지 처리하기
+- dict를 인자로 넣기(unpacking)
+- lambda 표현식
+```
+(lambda x, y: x + y)(1, 2) #3
+```
+- 타입힌트
+- 이름공간 scope
+- 재귀 recursive
+- 피보나치 수열
