@@ -303,7 +303,7 @@ print(bool([1, 2, 3])) #True
 
 ## 4.3 range
 - range(n) : 0부터 n-1까지 범위
-- range(n, m) : n부터 n-1까지 범위
+- range(n, m) : n부터 m-1까지 범위
 - range(n, m, s) : n부터 m-1까지 범위, +s만큼 증가하는 범위
 
 ## 4.4 string
