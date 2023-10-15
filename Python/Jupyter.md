@@ -432,6 +432,15 @@ function_name(parameter1, parameter2)
 
 ## 함수의 인수
 - 위치인수
+    - 인수의 위치로 무슨 값을 대입하는 지 확인한다.
+```
+def cylinder(r, h):
+    return 3.14 * r**2 * h
+```
+```
+print(cylinder(10, 5))
+print(cylinder(5, 10))
+```
 - 기본값 지정
 ```
 def greeting(name='익명'): 
@@ -446,6 +455,263 @@ def greeting(name='익명'):
 (lambda x, y: x + y)(1, 2) #3
 ```
 - 타입힌트
+    -  #타입힌트는 사람이 코드를 이해하기 위함, 변수 값 강제하는 성질 없음
+```
+def my_sum(a: int, b: int) -> int:
+    return a + b
+```
+```
+my_sum('1', 2) #Error
+```
 - 이름공간 scope
+    - Local scope : 정의된 함수 내부
+    - Enclosed scope : 상위 함수
+    - Global scope : 함수 밖의 변수 혹은 import된 모듈
+    - Built-in scope : python이 기본적으로 가지고 있는 함수 혹은 변수
+
 - 재귀 recursive
+    - 재귀 함수는 함수 내부에서 자기 자신을 호출하는 함수를 의미
+```
+# 팩토리얼(n! = 1 * 2 * 3 * ... * n)
+def fact(n):
+    result = 1
+
+    while n > 1:
+        result = result * n
+        # result *= n
+
+        n = n - 1
+        # n -= 1
+
+    return result    
+```
+
 - 피보나치 수열
+    - F(0) = F(1) = 1
+    - F(N) = F(N-1) + F(N-2)
+
+# 04. Datastructure
+## 문자열 메소드
+```
+a = 'hello my name is alisha'
+
+a.capitalize() #첫 글자를 대문자로
+a.title() #모든 단어의 시작글자를 대문자로
+a.upper() #모두 대문자로
+a.lower() #모두 소문자로
+
+```
+- `join()`는 징검다리처럼 연결해준다. #'hi??my??name'
+```
+my_list = ['hi', 'my', 'name']
+'??'.join(my_list)
+```
+
+- `.strip([chars])`는 소괄호 안의 문자를 제거하고 출력해준다.
+```
+# .strip([chars])
+
+my_string = '   hello\n   '
+print(my_string) #공백 포함 출력
+print(my_string.strip()) #공백 제거 출력
+
+my_string2 = 'hihihellohihi'
+print(my_string2.strip('hi'))
+print(my_string2.lstrip('hi')) #왼쪽 문자 제거 출력
+print(my_string2.rstrip('hi')) #오른쪽 문자 제거 출력
+```
+
+- `.replace(old, new, [count])`
+```
+a = 'wooooow'
+a.replace('o', '!', 3) #'w!!!oow'
+```
+
+- `.find(x)`
+```
+a = 'apple'
+print(a.find('p')) #1
+print(a.find('z')) #없는 경우 -1출력
+```
+
+- `.index()`
+```
+a = 'apple'
+print(a.index('a')) #a가 어느 자리에 있는지를 출력 #0
+print(a.index('z')) #Error
+```
+
+- `.split()`
+```
+a = 'my_name_is'
+a.split('_')
+```
+
+- `.count(x)`
+```
+'woooooooooooow'.count('w') #2
+```
+
+## 리스트 메소드
+- `.append(x)`
+```
+numbers = [1, 5, 2, 6, 2, 1]
+numbers.append(10)
+print(numbers) #[1, 5, 2, 6, 2, 1, 10]
+```
+
+- `.extend(iterable)`
+```
+a = [99, 100]
+
+numbers.extend(a)
+print(numbers) #[1, 5, 2, 6, 2, 1, 10, 99, 100]
+print(numbers + a) #[1, 5, 2, 6, 2, 1, 10, 99, 100, 99, 100]
+```
+
+- `.insert(idx, x)`
+```
+numbers.insert(3, 3.5)
+print(numbers)
+#[1, 5, 2, 3.5, 6, 2, 1, 10, 99, 100]
+```
+
+- `.remove(x)`
+```
+numbers.remove(3.5)
+print(numbers)
+```
+
+- `.pop(x)`
+```
+numbers.pop() #제일 뒤 데이터 삭제
+print(numbers)
+
+numbers.pop(0) #0번자리 데이터 삭제
+print(numbers)
+```
+```
+num = numbers.pop()
+print(num) #삭제될 마지막 문자 출력
+```
+
+- `.sort()`
+```
+numbers = [1, 6, 2, 1, 3, 2, 7, 10]
+print(numbers)
+
+print(numbers.sort()) #리스트 자체 변경 A -> A
+
+print(numbers)
+numbers.sort(reverse=True)
+print(numbers)
+```
+- `sorted()`
+```
+numbers = [1, 6, 2, 1, 3, 2, 7, 10]
+print(sorted(numbers)) #새로운 리스트 반환 A -> B
+# [1, 1, 2, 2, 3, 6, 7, 10]
+print(numbers)
+# [1, 6, 2, 1, 3, 2, 7, 10]
+```
+
+- `.reverse()`
+```
+numbers = [1, 6, 2, 1, 3, 2, 7, 10]
+numbers.reverse()
+print(numbers) # 거꾸로 출력
+numbers = numbers[  :  : -1 ] # 슬라이싱, 전부 거꾸로 출력 
+print(numbers)
+
+```
+
+## list copy
+- `.deepcopy()`
+    - b = a[:]를 사용해서 lsit를 원소로 가진 list를 copy하면 copy인 b의 원소를 바꾸고 싶을 때 a도 바뀌는 문제가 생긴다. 이런 경우, `.deepcopy()`를 써서 해결 가능하다.
+```
+import copy
+a = [1, 2, [99, 100]]
+b = copy.deepcopy(a) #list안에 list있는 경우의 복제
+
+b[2][1] = 1000
+
+print(a) #[1, 2, [99, 100]]
+print(b) #[1, 2, [99, 1000]]
+```
+
+## list comprehension
+```
+numbers = list(range(1, 11))
+even_list2 = [ number for number in numbers if number % 2 == 0]
+print(even_list2)
+```
+
+## 딕셔너리 메소드
+- `.pop(key[, default]) `
+```
+info = {
+    'name': 'Alisha',
+    'location': 'Incheon',
+}
+
+print(info)
+print(info.pop('location'))
+
+print(info)
+print(info.pop('location', None))
+```
+
+- `.update()`
+```
+info.update(name='park')
+print(info)
+```
+
+- `.get(key[, default])`
+```
+print(info.get('name'))
+print(info.get('phone'))
+print(info.get('phone', '해당키가 없습니다.'))
+```
+
+## dict comprehension
+- for
+- comp
+
+## 세트 메소드
+- `.add(x)`
+- `.update({set})`
+- `.remove(x)`
+- `.pop()`
+
+## map, filter, zip
+- map
+```
+a = '1 3 5 7 9'
+# numbers = [1, 3, 5, 7, 9]
+numbers = list(map(int, a.split()))
+print(numbers)
+```
+- filter(function, iterable)
+    - filter에 들어가는 function은 T/F 를 반환
+```
+def is_odd(x):
+    return bool(x%2)
+    
+print(is_odd(5)) #True
+print(is_odd(10)) #False
+
+numbers = [1, 2, 3, 4, 5]
+result2 = filter(is_odd, numbers)
+print(list(result2))
+
+```
+- zip
+```
+a = [1, 2, 3, 4]
+b = [100, 200, 300, 400, 500]
+
+result = zip(a, b)
+print(result)
+print(list(result))
+```
