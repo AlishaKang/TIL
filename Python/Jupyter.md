@@ -715,3 +715,136 @@ result = zip(a, b)
 print(result)
 print(list(result))
 ```
+
+# 05 모듈 modul
+- 모듈
+- 패키지
+- 파이썬 내장 패키지
+    - math
+    - random
+    - datetime
+
+# 06 Error
+## Syntax error 문법 오류
+## Exception
+- ZeroDivisionError 
+- NameError
+- TypeError
+- ValueError
+- KeyError
+- ModuleNotFoundError 
+- KeyboardInterrupt  
+
+## 예외처리
+```
+try:
+    code
+except 예외:
+    code
+```
+- `else` 
+    - 예외를 일으키지 않을 때 실행되는 코드
+```
+try:
+    number = [1, 2, 3]
+    num = numbers[1]
+except:
+    print('오류발생')
+else:
+    print(num ** 3)
+```
+- `finally`
+    - 예외 상황과 무관하게 최종적으로 실행되는 코드
+```
+try:
+    numbers = [1, 2, 3]
+    num = numbers[1]
+except:
+    print('오류발생')
+finally:
+    print('end')
+```
+- `raise`
+    - 예외를 강제로 발생시킴
+
+# 07 객체지향 프로그래밍 (OOP)
+- 클래스(class): 같은 종류의 집단에 속하는 속성(attrtibute)과 행위(method)를 정의한 것
+- 인스턴스(instance): 클래스를 실제로 메모리상에 할당한 것
+- 속성(attribute): 클래스/인스턴스가 가지고 있는 데이터/값
+- 행위(method): 클래스/인스턴스가 가지고 있는 함수/기능
+
+## Class
+- 클래스 선언
+```
+class ClassName:
+    attritbute = value
+
+    def method_name(self):
+        code
+```
+- 인스턴스화
+```
+ClassName()
+```
+
+## 생성자, 소멸자
+```
+class Myclass:
+
+        def __init__(self):
+            pass
+        def __del__(self):
+            pass
+```
+## 클래스 변수
+- 클래스 선언 등록 최상단에 위치
+
+## 인스턴스변수
+- 인스턴스 내부에서 생성한 변수('self.variable = ')
+
+```
+class MyClass:
+    class_variable = '클래스변수'
+
+    def __init__(self, name):
+        self.instance_variable = '인스턴스변수'
+```        
+
+## 클래스메소드, 인스턴스메소드, 스태틱메소드
+```
+class MyClass
+    def instance_method(self):
+        pass
+
+    @classmethod
+    def class_method(cls):
+        pass
+
+    @staticmethod
+    def static_method():
+        pass
+```
+
+## 상속
+```
+class Person:
+    id = '999999-999999'
+
+    def __init__(self, name):
+        self.name = name
+
+    def greeting(self):
+        print(f'안녕하세요. {self.name}입니다.')
+```
+```
+class Student(Person): # class 자식클래스(부모클래스) : 
+    # def __init__(self, name):
+    #     self.name = name
+
+    # def greeting(self):
+    #     print(f'안녕하세요. {self.name}입니다.')
+
+    def __init__(self, name, student_id):
+        self.name = name
+        self.student_id = student_id
+```
