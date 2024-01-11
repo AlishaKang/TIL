@@ -168,3 +168,17 @@ DELETE FROM 학생1;
 
 
 # MYSQL 활용
+- CREATE -- 테이블 생성
+```
+CREATE TABLE tbl_subject2 (
+sub_no CHAR(4) NOT NULL PRIMARY KEY,
+sub_name VARCHAR(20) NOT NULL,
+sub_classroom CHAR(5) NOT NULL,
+sub_dept VARCHAR(20) NOT NULL,
+sub_time INT NOT NULL
+) ;
+```
+- DESC -- describe 약자로 각 컬럼의 데이터 유형 등을 확인 가능하다.
+```
+DESC tbl_students2;
+```
