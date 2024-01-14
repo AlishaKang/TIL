@@ -168,6 +168,8 @@ DELETE FROM 학생1;
 
 
 # MYSQL 활용
+## 1. 데이터 정의문
+
 - CREATE -- 테이블 생성
 ```
 CREATE TABLE tbl_subject2 (
@@ -182,3 +184,30 @@ sub_time INT NOT NULL
 ```
 DESC tbl_students2;
 ```
+
+- ALTER -- 테이블 수정
+```
+ALTER TABLE 학생2
+    ADD 등록날짜 DATETIME NOT NULL DEFAULT '2019-12-30';
+```
+```
+ALTER TABLE 학생2
+    DROP COLUMN 등록날짜;
+```
+
+- DROP -- 테이블 삭제
+```
+DROP TABLE 테이블명;
+```
+
+## 2. 데이터 제어문
+- CREATE USER -- 사용자 계정 생성
+```
+CREATE USER 사용자_계정 IDENTIFIED BY '비밀번호';
+```
+생성된 사용자 계정 정보 확인
+```
+SELECT host, user FROM mysql.user;
+```
+
+
