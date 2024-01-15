@@ -209,5 +209,8 @@ CREATE USER 사용자_계정 IDENTIFIED BY '비밀번호';
 ```
 SELECT host, user FROM mysql.user;
 ```
-
+- GRANT -- 권한 부여
+```
+GRANT 권한_내용 ON 권한대상 TO 사용자계정;
+```
 
