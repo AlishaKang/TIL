@@ -213,4 +213,11 @@ SELECT host, user FROM mysql.user;
 ```
 GRANT 권한_내용 ON 권한대상 TO 사용자계정;
 ```
-
+사용자 계정의 권한 확인
+```
+SHOW GRANTS FOR 'user1'@'127.1.1.1';
+```
+현재 접속 사용자의 권한 표시
+```
+SHOW GRANTS; 
+```
