@@ -373,5 +373,74 @@ END
 
 ### 2.2 삽입, 수정 저장 프로시저 생성
 ```
+DELIMITER //
+CREATE PROCEDURE InsertOrUpdateCourse (
+	IN CourseNo VARCHAR(4),
+    IN CourseName VARCHAR(20),
+    IN CourseRoom CHAR(3),
+    IN CourseDept VARCHAR(20),
+    IN CourseCredit INT)
+BEGIN
+	DECLARE Count INT;
+    SELECT COUNT(*) INTO Count FROM tbl_subject WHERE sub_no = CourseNo;
+    IF (Count = 0) THEN
+		INSERT INTO tbl_subject(sub_no,sub_name,sub_classroom,sub_dept,sub_time)
+		VALUES(CourseNo, CourseName, CourseRoom, CourseDept, CourseCredit);
+	ELSE
+		UPDATE tbl_subject
+        SET sub_name = CourseName, sub_classroom = CourseRoom, sub_dept = CourseDept, sub_time = CourseCredit
+        where sub_no = CourseNo;
+	END IF;
+END //
+DELIMITER ;
+```
 
+### 2.3 저장 프로시저 호출
+- 삽입 저장 프로시저의 호출
+```
+CALL InsertOrUpdateCourse('c006', '연극학개론', '310', '교양학부', 2);
+```
+- 수장 저장 프로시저의 호출
+```
+CALL InsertOrUpdateCourse('c006', '연극학개론', '410', '교양학부', 2);
+```
+
+### 2.4 검색 저장 프로시저의 생성 및 활용
+```
+DELIMITER //
+CREATE PROCEDURE SelectAverageOfBestScore (
+   IN Score INT,
+   OUT Count INT)
+BEGIN
+   DECLARE NoMoreData INT DEFAULT FALSE;
+   DECLARE Midterm INT ;
+   DECLARE Final INT ;
+   DECLARE Best INT ;
+   DECLARE ScoreListCursor CURSOR FOR 
+         SELECT mid_score, final_score FROM tbl_signup ;
+   DECLARE CONTINUE HANDLER FOR NOT FOUND SET NoMoreData = TRUE ;
+	 SET Count = 0;
+   OPEN ScoreListCursor ;
+   REPEAT
+       FETCH ScoreListCursor INTO Midterm, Final ;
+         IF Midterm > Final THEN
+            SET Best = Midterm ;
+         ELSE
+            SET BEST = Final ;
+         END IF ;
+         IF (Best >= Score) THEN
+            SET Count = Count + 1 ;
+         END IF ;
+       UNTIL NoMoreData END REPEAT ;
+       CLOSE ScoreListCursor ;
+END ;
+//
+DELIMITER ;
+```
+
+### 2.5 프로시저의 호출
+- 검색 저장 프로시저의 호출
+```
+CALL SelectAverageOfBestScore(95,@Count);
+Select @Count;
 ```
