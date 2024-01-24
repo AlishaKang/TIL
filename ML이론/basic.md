@@ -1,11 +1,59 @@
-#  지도학습 알고리즘과 비지도학습 알고리즘
+# 데이터 분석의 과정
+1. 이해 및 프로젝트의 목표 설정
+2. 데이터 수집
+3. 데이터 탐색 및 전처리
+4. 데이터 분석
+5. 시각화 설계 및 구현
+6. 결과 해석 및 인사이트 도출
+
+# 데이터 전처리
+- 데이터 변환
+    - 로그 변환
+    - 지수 변환
+    - 세제곱 변환
+    - 제곱 변환
+- 결측치 처리
+- 데이터 인코딩
+    - 원-핫 인코딩
+    - 라벨 인코딩
+- 스케일링
+    - Standard Scaler
+    - Robust Scaler
+    - Minmax Scaler
+    - Log transformation
+
+#  지도학습 알고리즘과 비지도학습 알고리즘, 강화학습
 - 지도학습 알고리즘
-    - 단순회귀분석(Simple Linear Regression)
-    - 다중회귀분석(Multiple Linear Regression)
+    - 연속적인 값을 예측하는 `회귀`
+        - 단순회귀분석(Simple Linear Regression)
+        - 다중회귀분석(Multiple Linear Regression)
+    - 이산적인 값을 예측하는 `분류`
+        - Logistic Regression
+        - Decision Tree (분류&회귀 모두 사용 가능)
+        - Random Forest
+        - K-nearest Neighbors (KNN)
+        - SVM
+        - Boosting (분류&회귀 모두 사용 가능)
+    - 신경망 Neural Network (NN)
+    - Deep Learning
+    - Naive Bayes
+    - CNN(Convolution Neural Network)
+    - RNN 
     
 - 비지도학습 알고리즘
-    - 계층적 군집분석(Hiarchical Clustering)
-    - 비계층적 군집분석(K-means Clustering)
+    - 군집화(Clustering)
+        - 계층적 군집분석(Hiarchical Clustering)
+        - 비계층적 군집분석(K-means Clustering)
+    - 차원 축소(Dimensionality Reduction) 
+        - PCA(Principal Component Analysis) 
+        - t-SNE(t-Distributed Stochastic Neighbor Embedding)
+    - 연관 규칙 학습(Association Rule Learning)
+        - 어프라이어리(Apriori)
+        - 이클렛(Eclat)
+
+- 강화학습 
+    - 특정한 환경에서 최적의 결정을 내리기 위한 보상 시스템 기반 학습
+    - ex) 알파고(최적의 결정인 action을 했을 때 reward를 주는 방식)
 
 
 
