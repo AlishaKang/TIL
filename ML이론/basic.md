@@ -289,4 +289,19 @@ B > 0 : 관심범주에 속할 확률 증가
 
 B < 0 : 관심범주에 속할 확률 감소
 ```
-​
+
+# 지도학습 회귀모델&분류모델의 평가지표
+## 지도학습 회귀모델의 평가지표
+- RMSE(Root Mean Squared Error)
+- R-Square(결정계수) = SSR/SST = 1 - SSE/SST = 모형으로 설명되는 변동/ 전체변동
+- MAE(Mean Absolute Error)
+- MSE(Mean Squared Error)
+- MAPE(Mean Absolute Percentage Error)
+
+## 지도학습 분류모델의 평가지표
+- 정오분류포(Confusion Matrix)를 활용한 평가
+- 정확도(Accuracy) = TN+TP / TN+FP+FN+TP
+- 정밀도(Precision) = TP/TP+FN
+- 재현율(Recall) = TP/TP+FP
+- F1점수(F1-score) 정밀도와 재현율의 조화 평균, 정밀도와 재현율이 모두 중요한 경우에 사용됨.
+- ROC-AUC TPR와 FPR의 조합을 나타냄, 왼쪽 위에 가까울수록 좋음,
